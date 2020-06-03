@@ -1,18 +1,66 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.nio.file.Paths;
 import java.util.*;
 
-public class buildingGraph {
+public class buildingGraph implements Serializable {
 
     /** Constructor that creates mapping of buildings to graph indices and sets up
      * adjacency matrix
      * @param buildingNames names of building subset to create graph with
+     * @param name name of this graph for serialization
+     * @param fileDistances mapping of distances to each building from file
+     * @param fileIndices mapping of building names to indices in file rows
      */
-    public buildingGraph(String[] buildingNames) {
-        this.buildingDistances = new double[buildingNames.length][buildingNames.length];
-        for (int i = 0; i < buildingNames.length; i++) {
-            buildings.put(buildingNames[i], i);
-            buildingIndices.put(i, buildingNames[i]);
+    public buildingGraph(List<String> buildingNames, String name, HashMap<String, double[]> fileDistances,
+                         HashMap<String, Integer> fileIndices) throws IOException {
+        this.distances = fileDistances;
+        this.indices = fileIndices;
+        this.graphName = name;
+        this.buildingDistances = new double[buildingNames.size()][buildingNames.size()];
+        for (int i = 0; i < buildingNames.size(); i++) {
+            buildings.put(buildingNames.get(i), i);
+            buildingIndices.put(i, buildingNames.get(i));
         }
+        this.timestamp = System.currentTimeMillis();
         constructGraph();
+        getGraphID();
+        writeGraph();
+    }
+
+    /** Reads a building graph from disk under the given id
+     *
+     * @param graphID hashcode id for the building graph to be read into memory
+     * @return deserialized building graph
+     */
+    public static buildingGraph readGraph(String graphID) {
+        File graphFile = Paths.get(Main.GRAPHDIR.getPath(), graphID).toFile();
+        if (graphFile.exists()) {
+            return serializeUtils.readObject(graphFile, buildingGraph.class);
+        }
+        return null;
+    }
+
+    /** Writes this building graph to disk under filename given by the unique hash code
+     * for this building graph
+     * @throws IOException if file writing or hashing encounters an error
+     */
+    public void writeGraph() throws IOException {
+        File graphFile = Paths.get(Main.GRAPHDIR.getPath(), getGraphID()).toFile();
+        serializeUtils.writeObject(graphFile, this);
+    }
+
+    /** Getter method for hashcode of this building graph that generates the hashcode from
+     * serializing this object if hashcode not generated before
+     * @return id for this building graph from hash function
+     * @throws IOException if hashing encounters an error
+     */
+    public String getGraphID() throws IOException {
+        if (this.graphID == null) {
+            this.graphID = serializeUtils.getHash((Object) serializeUtils.serialize(this));
+        }
+        return this.graphID;
     }
 
     /** Wrapper method for calculating and displaying minimum path */
@@ -24,18 +72,18 @@ public class buildingGraph {
     /** Constructs graph based on building names given in constructor */
     private void constructGraph() {
         for (String buildingRow : buildings.keySet()) {
-            double[] currRow = Main.csvRows.get(buildingRow);
+            double[] currRow = distances.get(buildingRow);
             for (String buildingCol : buildings.keySet()) {
                 buildingDistances[buildings.get(buildingRow)][buildings.get(buildingCol)] =
-                        currRow[buildings.get(buildingCol)];
+                        currRow[indices.get(buildingCol)];
             }
         }
     }
 
     /** Displays the constructed adjacency matrix for graph in table format */
     public void displayGraph() {
-        for (String buildingName : buildings.keySet()) {
-            System.out.print(buildingName + " ");
+        for (int buildingIndex : buildingIndices.keySet()) {
+            System.out.print(buildingIndices.get(buildingIndex) + " ");
         }
         System.out.println();
         for (int i = 0; i < buildingDistances.length; i++) {
@@ -95,7 +143,8 @@ public class buildingGraph {
      * DP calculation
      */
     private void getPath() {
-        pathDistances = new HashMap<>();
+        pathNodes = new int[buildingDistances.length];
+        pathDistances = new double[buildingDistances.length];
         Path minPath = null;
         double minDist = Double.MAX_VALUE;
         for (Path longPath : resultsDP.keySet()) {
@@ -104,30 +153,41 @@ public class buildingGraph {
                 minDist = resultsDP.get(longPath);
             }
         }
-        Integer pathNode = minPath.headNode;
+        this.pathLen = minDist;
+        int pathNode = minPath.headNode;
         HashSet<Integer> pathTraversed = new HashSet<Integer>(minPath.traversed);
+        int nodeIndex = buildingDistances.length - 1;
         while (true) {
             Integer prevNode = currNodeParents.get(new Path(pathNode, pathTraversed));
             pathTraversed.remove(prevNode);
             if (prevNode == null) {
                 break;
             }
-            pathDistances.put(pathNode, buildingDistances[pathNode][prevNode]);
+            pathNodes[nodeIndex] = pathNode;
+            pathDistances[nodeIndex] = buildingDistances[pathNode][prevNode];
+            nodeIndex -= 1;
             pathNode = prevNode;
         }
-        pathDistances.put(0, 0.0);
+        pathNodes[0] = 0;
+        pathDistances[0] = 0.0;
     }
 
     /** Displays optimal path with building names and distance between */
     public void displayPath() {
+        System.out.println();
+        System.out.println(String.format("Optimal path for building set %s, starting from %s:",
+                this.graphName, buildingIndices.get(0)));
         if (pathDistances != null) {
-            for (Map.Entry<Integer, Double> node : pathDistances.entrySet()) {
-                if (node.getValue() > 0) {
-                    System.out.println(node.getValue());
+            for (int nodeIndex = 0; nodeIndex < buildingDistances.length; nodeIndex++) {
+                if (pathDistances[nodeIndex] > 0) {
+                    System.out.println("|");
+                    System.out.println(pathDistances[nodeIndex]);
+                    System.out.println("|");
                 }
-                System.out.println(buildingIndices.get(node.getKey()));
+                System.out.println(buildingIndices.get(pathNodes[nodeIndex]));
             }
         }
+        System.out.println(String.format("Total path distance: %.2f meters", this.pathLen));
     }
 
     /** Retrieves previous DP calculation by accessing appropriate entry in hashmap
@@ -195,24 +255,30 @@ public class buildingGraph {
         }
     };
 
-    /** Mapping representing minimum path with keys as nodes and value as the distance from
-     * given node to previous/adjacent node along path
+    /** Ordered collection of nodes traversed from start on optimal path
      */
-    HashMap<Integer, Double> pathDistances;
+    private transient int[] pathNodes;
+
+    /** Ordered collection of distance between each node along optimal path
+     */
+    private transient double[] pathDistances;
+
+    /** Length of minimum path */
+    private transient double pathLen;
 
     /** Mapping of path objects (head node and collection of nodes along path from start)
      * to distance for intermediate computations */
-    HashMap<Path, Double> resultsDP;
+    private transient HashMap<Path, Double> resultsDP;
 
     /** Mapping of path objects (head node and collection of nodes along path from start)
      * to the node traversed before reaching head node
      */
-    HashMap<Path, Integer> currNodeParents;
+    private transient HashMap<Path, Integer> currNodeParents;
 
     /** Collection of possible combinations of traversal from empty path to last node -
      * path combinations do not include last node
      */
-    private List<HashSet<Integer>> combinations = new ArrayList<>();
+    private transient List<HashSet<Integer>> combinations = new ArrayList<>();
 
     /** Adjacency matrix used to represent complete weighted graph */
     public double[][] buildingDistances;
@@ -222,5 +288,23 @@ public class buildingGraph {
 
     /** Mapping of indices to building names for display purposes */
     private HashMap<Integer, String> buildingIndices = new HashMap<>();
+
+    /** Name for this set of buildings given by user */
+    private String graphName;
+
+    /** Long representing timestamp of the creation of this set of buildings */
+    private Long timestamp;
+
+    /** Hashcode given to this building graph using MD5 hashing function */
+    private String graphID;
+
+    /** Mapping of building graph names to hash code for lookups */
+    public static transient HashMap<String, String> graphSet = new HashMap<>();
+
+    /** Mapping of building names to distances from file read in main */
+    private transient HashMap<String, double[]> distances;
+
+    /** Mapping of building names to indices from file read in main */
+    private transient HashMap<String, Integer> indices;
 
 }
