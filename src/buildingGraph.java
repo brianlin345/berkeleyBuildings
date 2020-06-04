@@ -255,6 +255,7 @@ public class buildingGraph implements Serializable {
         }
     };
 
+
     /** Ordered collection of nodes traversed from start on optimal path
      */
     private transient int[] pathNodes;
@@ -297,9 +298,6 @@ public class buildingGraph implements Serializable {
 
     /** Hashcode given to this building graph using MD5 hashing function */
     private String graphID;
-
-    /** Mapping of building graph names to hash code for lookups */
-    public static transient HashMap<String, String> graphSet = new HashMap<>();
 
     /** Mapping of building names to distances from file read in main */
     private transient HashMap<String, double[]> distances;
