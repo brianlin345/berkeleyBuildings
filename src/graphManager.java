@@ -4,10 +4,19 @@ import java.util.HashMap;
 
 public class graphManager implements Serializable {
 
+    /** Constructor for graphManager that sets up save file
+     *
+     * @param saveName default name to save graphManager instance to
+     */
     public graphManager(String saveName) {
         saveFile = Paths.get(Main.GRAPHDIR.getPath(), saveName).toFile();
     }
 
+    /** Reads a graphManager from disk under the given file name
+     *
+     * @param saveName name of file to read from .graphs directory
+     * @return deserialized graphManager object
+     */
     public static graphManager readGraphManager(String saveName) {
         File graphManagerFile = Paths.get(Main.GRAPHDIR.getPath(), saveName).toFile();
         if (graphManagerFile.exists()) {
@@ -16,6 +25,10 @@ public class graphManager implements Serializable {
         return null;
     }
 
+    /** Writes this graphManager to disk
+     *
+     * @throws IOException if error occurs when writing to disk
+     */
     public void writeGraphManager() throws IOException {
         serializeUtils.writeObject(saveFile, this);
     }
@@ -57,6 +70,62 @@ public class graphManager implements Serializable {
         return csvRows.containsKey(buildingName);
     }
 
+    /** Check if the given buildingGraph has been created.
+     *
+     * @param graphName name of graph to check for
+     * @return if graph under given name exists
+     */
+    public boolean checkGraph(String graphName) {
+        return graphSet.containsKey(graphName);
+    }
+
+    /** Adds a new graph with mapping to its hashcode used for serialization
+     *
+     * @param graphName name of graph to add
+     * @param graphID hashcode of new graph
+     */
+    public void addGraph(String graphName, String graphID) {
+        graphSet.put(graphName, graphID);
+    }
+
+    /** Removes the graph under given name from mappings and deletes file on disk.
+     * Assumes a graph exists under the given name
+     *
+     * @param graphName name of graph to remove
+     */
+    public void removeGraph(String graphName) {
+        File graphFile = Paths.get(Main.GRAPHDIR.getPath(), graphSet.get(graphName)).toFile();
+        graphFile.delete();
+        graphSet.remove(graphName);
+    }
+
+    /** Returns hashcode for the graph with given name, assuming there exists a graph with that name
+     *
+     * @param graphName name of graph to get hashcode for
+     * @return hashcode for graph under given name
+     */
+    public String getGraph(String graphName) {
+        return graphSet.get(graphName);
+    }
+
+    /** Returns the number of buildingGraphs tracked by this graphManager.
+     *
+     * @return number of tracked building graphs
+     */
+    public int numGraphs() {
+        return graphSet.size();
+    }
+
+    /** Displays every graph tracked by this graphManager using overridden toString method
+     */
+    public void displayGraphs() {
+        for (String graphName : graphSet.keySet()) {
+            buildingGraph curr = buildingGraph.readGraph(graphSet.get(graphName));
+            System.out.println(curr);
+            System.out.println();
+        }
+    }
+
     /** Mapping of building names to distances from all other buildings
      * from distance matrix csv file */
     public HashMap<String, double[]> csvRows = new HashMap<>();
@@ -65,7 +134,8 @@ public class graphManager implements Serializable {
     public HashMap<String, Integer> csvBuildingIndices = new HashMap<>();
 
     /** Mapping of building graph names to hash code for lookups */
-    public HashMap<String, String> graphSet = new HashMap<>();
+    private HashMap<String, String> graphSet = new HashMap<>();
 
-    public File saveFile;
+    /** File object to save graph data to on disk */
+    private File saveFile;
 }

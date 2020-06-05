@@ -18,14 +18,20 @@ public class buildingGraph implements Serializable {
         this.distances = fileDistances;
         this.indices = fileIndices;
         this.graphName = name;
-        this.buildingDistances = new double[buildingNames.size()][buildingNames.size()];
         for (int i = 0; i < buildingNames.size(); i++) {
             buildings.put(buildingNames.get(i), i);
             buildingIndices.put(i, buildingNames.get(i));
         }
-        this.timestamp = System.currentTimeMillis();
         constructGraph();
         getGraphID();
+        writeGraph();
+    }
+
+    public void updateBuildingGraph(HashMap<String, double[]> fileDistances,
+                               HashMap<String, Integer> fileIndices) throws IOException {
+        this.distances = fileDistances;
+        this.indices = fileIndices;
+        constructGraph();
         writeGraph();
     }
 
@@ -63,6 +69,41 @@ public class buildingGraph implements Serializable {
         return this.graphID;
     }
 
+    public boolean checkBuilding(String buildingName) {
+        return buildings.containsKey(buildingName);
+    }
+
+    public String getBuilding(int buildingIndex) {
+        return buildingIndices.get(buildingIndex);
+    }
+
+    public int getBuildingIndex(String buildingName) {
+        return buildings.get(buildingName);
+    }
+
+    public void addBuilding(String buildingName) {
+        setBuilding(buildingName, buildings.size());
+    }
+
+    public void setBuilding(String buildingName, int buildingIndex) {
+        buildings.put(buildingName, buildingIndex);
+        buildingIndices.put(buildingIndex, buildingName);
+    }
+
+    public void removeBuilding(String buildingName) {
+        if (buildings.get(buildingName) == buildings.size() - 1) {
+            buildingIndices.remove(buildings.get(buildingName));
+        } else {
+            setBuilding(buildingIndices.get(buildings.size() - 1), buildings.get(buildingName));
+            buildingIndices.remove(buildings.size()-1);
+        }
+        buildings.remove(buildingName);
+    }
+
+    public int numBuildings() {
+        return buildings.size();
+    }
+
     /** Wrapper method for calculating and displaying minimum path */
     public void calcMinPath() {
         minPath();
@@ -70,7 +111,8 @@ public class buildingGraph implements Serializable {
     }
 
     /** Constructs graph based on building names given in constructor */
-    private void constructGraph() {
+    public void constructGraph() {
+        this.buildingDistances = new double[buildings.size()][buildings.size()];
         for (String buildingRow : buildings.keySet()) {
             double[] currRow = distances.get(buildingRow);
             for (String buildingCol : buildings.keySet()) {
@@ -211,6 +253,7 @@ public class buildingGraph implements Serializable {
      */
     public void getCombinations(int[] input) {
         int[] data = new int[input.length];
+        combinations = new ArrayList<>();
         genCombinations(input, 0, 0, data);
     }
 
@@ -255,6 +298,23 @@ public class buildingGraph implements Serializable {
         }
     };
 
+    /** toString method displaying building set name and included buildings
+     *
+     * @return formatted string containing name and included buildings
+     */
+    @Override
+    public String toString() {
+        StringBuilder buildingGraphString = new StringBuilder(String.format("Name: %s \nBuildings: ", graphName));
+        int buildingIndex = 0;
+        for (String building : buildings.keySet()) {
+            buildingGraphString.append(building);
+            if (buildingIndex < buildings.size() - 1) {
+                buildingGraphString.append(", ");
+            }
+            buildingIndex += 1;
+        }
+        return buildingGraphString.toString();
+    }
 
     /** Ordered collection of nodes traversed from start on optimal path
      */
@@ -279,7 +339,7 @@ public class buildingGraph implements Serializable {
     /** Collection of possible combinations of traversal from empty path to last node -
      * path combinations do not include last node
      */
-    private transient List<HashSet<Integer>> combinations = new ArrayList<>();
+    private transient List<HashSet<Integer>> combinations;
 
     /** Adjacency matrix used to represent complete weighted graph */
     public double[][] buildingDistances;
@@ -292,9 +352,6 @@ public class buildingGraph implements Serializable {
 
     /** Name for this set of buildings given by user */
     private String graphName;
-
-    /** Long representing timestamp of the creation of this set of buildings */
-    private Long timestamp;
 
     /** Hashcode given to this building graph using MD5 hashing function */
     private String graphID;
