@@ -1,13 +1,22 @@
 import java.util.HashSet;
 import java.util.Objects;
 
+/** Class for an intermediate traversed path in a building set, used during optimal path calculation
+ * @author Brian Lin
+ */
 public class Path {
 
+    /** Constructor for a path with its head node and traversed nodes
+     *
+     * @param headNode current node of path
+     * @param t nodes traversed to reach current node
+     */
     public Path(int headNode, HashSet<Integer> t) {
         this.headNode = headNode;
         this.traversed = t;
     }
 
+    /** Overridden equals method for hashing comparison */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -19,6 +28,7 @@ public class Path {
         return headNodeEquals && traversedEquals;
     }
 
+    /** Overridden hash method for hashing comparison */
     @Override
     public int hashCode() {
         return Objects.hash(headNode, traversed);

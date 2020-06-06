@@ -2,6 +2,9 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 
+/** Main class for Berkeley optimal building paths program.
+ * @author Brian Lin
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -73,7 +76,7 @@ public class Main {
             List<String> buildingList = new ArrayList<>();
             System.out.println("Enter building names to add to path or STOP to finishing inputting:");
             while(true) {
-                String input = scan.next();
+                String input = scan.nextLine();
                 if (input.equals("STOP")) {
                     break;
                 }
@@ -85,7 +88,7 @@ public class Main {
             }
             while(true) {
                 System.out.println("Enter the building name to start at:");
-                String input = scan.next();
+                String input = scan.nextLine();
                 if (buildingList.contains(input)) {
                     if (!buildingList.get(0).equals(input)) {
                         buildingList.set(buildingList.indexOf(input), buildingList.get(0));
@@ -120,12 +123,12 @@ public class Main {
             while(updateInputExit) {
                 System.out.println(
                         "Enter 1 to add buildings, 2 to remove buildings, or 3 to continue.");
-                String updateInput = scan.next();
+                String updateInput = scan.nextLine();
                 switch (updateInput) {
                     case "1":
                         System.out.println("Enter building names to add to path or STOP to finishing inputting:");
                         while (true) {
-                            String input = scan.next();
+                            String input = scan.nextLine();
                             if (input.equals("STOP")) {
                                 break;
                             }
@@ -139,7 +142,7 @@ public class Main {
                     case "2":
                         System.out.println("Enter building names to remove from path or STOP to finishing inputting:");
                         while (updateGraph.numBuildings() > 0) {
-                            String input = scan.next();
+                            String input = scan.nextLine();
                             if (input.equals("STOP")) {
                                 break;
                             }
@@ -160,7 +163,7 @@ public class Main {
             }
             while(true) {
                 System.out.println("Enter the building name to start at:");
-                String input = scan.next();
+                String input = scan.nextLine();
                 if (updateGraph.checkBuilding(input)) {
                     if (!updateGraph.getBuilding(0).equals(input)) {
                         updateGraph.setBuilding(updateGraph.getBuilding(0),
@@ -205,7 +208,7 @@ public class Main {
     }
 
     /** Path to csv file with raw distance values */
-    public static String csvPath = "buildingDistance_sample.csv";
+    public static String csvPath = "buildingDistances.csv";
 
     /** File object for CWD */
     public static final File CWD = new File(".");
@@ -218,4 +221,5 @@ public class Main {
 
     /** graphManager instance containing overall graph data */
     public static graphManager graphData;
+
 }

@@ -2,6 +2,9 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+/** Class containing overall information and mapping for all building sets created by the user.
+ * @author Brian Lin
+ */
 public class graphManager implements Serializable {
 
     /** Constructor for graphManager that sets up save file

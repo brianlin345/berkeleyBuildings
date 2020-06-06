@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.nio.file.Paths;
 import java.util.*;
 
+/** Class representing a set of buildings and their optimal path as a connected graph
+ * @author Brian Lin
+ */
 public class buildingGraph implements Serializable {
 
     /** Constructor that creates mapping of buildings to graph indices and sets up
@@ -27,6 +30,12 @@ public class buildingGraph implements Serializable {
         writeGraph();
     }
 
+    /** Updates a deserialized building graph by reconstructing the graph and optimal path
+     *
+     * @param fileDistances mapping of building names to rows to use from distance file
+     * @param fileIndices mapping of building names to indices from distance file
+     * @throws IOException if writing the graph to disk encounters an error
+     */
     public void updateBuildingGraph(HashMap<String, double[]> fileDistances,
                                HashMap<String, Integer> fileIndices) throws IOException {
         this.distances = fileDistances;
@@ -69,27 +78,56 @@ public class buildingGraph implements Serializable {
         return this.graphID;
     }
 
+    /** Checks if a given building name exists in this building graph
+     *
+     * @param buildingName name of building to check for
+     * @return if given building is present in this building graph
+     */
     public boolean checkBuilding(String buildingName) {
         return buildings.containsKey(buildingName);
     }
 
+    /** Getter method for a given building by index assuming that it exists in this building graph
+     *
+     * @param buildingIndex index of building to return
+     * @return name of building corresponding to the given building node index
+     */
     public String getBuilding(int buildingIndex) {
         return buildingIndices.get(buildingIndex);
     }
 
+    /** Getter method for a given building index by name assuming that it exists in this building graph
+     *
+     * @param buildingName name of building to return
+     * @return index of building node corresponding to the given building name
+     */
     public int getBuildingIndex(String buildingName) {
         return buildings.get(buildingName);
     }
 
+    /** Adds a new building to this building graph by setting the building name
+     * to the end of the collection of mappings
+     *
+     * @param buildingName name of building to add
+     */
     public void addBuilding(String buildingName) {
         setBuilding(buildingName, buildings.size());
     }
 
+    /** Sets a building to the given index for node traversal
+     *
+     * @param buildingName name of building to set
+     * @param buildingIndex name of index to map given building to
+     */
     public void setBuilding(String buildingName, int buildingIndex) {
         buildings.put(buildingName, buildingIndex);
         buildingIndices.put(buildingIndex, buildingName);
     }
 
+    /** Removes the building under the given name from this building graph.
+     * Assumes the given building exists in this building graph.
+     * @param buildingName name of building to remove
+     */
     public void removeBuilding(String buildingName) {
         if (buildings.get(buildingName) == buildings.size() - 1) {
             buildingIndices.remove(buildings.get(buildingName));
@@ -100,6 +138,10 @@ public class buildingGraph implements Serializable {
         buildings.remove(buildingName);
     }
 
+    /** Gets the number of buildings in this buildingGraph
+     *
+     * @return number of buildings
+     */
     public int numBuildings() {
         return buildings.size();
     }
@@ -222,9 +264,9 @@ public class buildingGraph implements Serializable {
         if (pathDistances != null) {
             for (int nodeIndex = 0; nodeIndex < buildingDistances.length; nodeIndex++) {
                 if (pathDistances[nodeIndex] > 0) {
-                    System.out.println("|");
-                    System.out.println(pathDistances[nodeIndex]);
-                    System.out.println("|");
+                    System.out.println("   |");
+                    System.out.println(String.format("%.2f", pathDistances[nodeIndex]));
+                    System.out.println("   |");
                 }
                 System.out.println(buildingIndices.get(pathNodes[nodeIndex]));
             }
@@ -336,8 +378,7 @@ public class buildingGraph implements Serializable {
      */
     private transient HashMap<Path, Integer> currNodeParents;
 
-    /** Collection of possible combinations of traversal from empty path to last node -
-     * path combinations do not include last node
+    /** Collection of possible combinations of traversal from empty path to last node
      */
     private transient List<HashSet<Integer>> combinations;
 
