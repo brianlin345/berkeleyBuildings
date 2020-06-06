@@ -41,6 +41,12 @@ public class Main {
                         System.out.println("Invalid command format.");
                     }
                     break;
+                case "help":
+                    if (args.length == 1) {
+                        helpHandler();
+                    } else {
+                        System.out.println("Invalid command format.");
+                    }
                 case "quit":
                     break;
                 default:
@@ -195,6 +201,29 @@ public class Main {
         } else {
             System.out.println("No graph with this name found.");
         }
+    }
+
+    /** Handler for help command in main.
+     *
+     */
+    public static void helpHandler() {
+        StringBuilder helpText = new StringBuilder("Commands: \n");
+        helpText.append("add [name]: adds a new set of buildings to calculate optimal path for.\n");
+        helpText.append("update [name]: changes contents of an existing set of buildings to calculate optimal path for.\n");
+        helpText.append("remove [name]: removes an existing set of buildings.\n");
+        helpText.append("list: displays all existing sets of buildings to calculate optimal path for.\n");
+        helpText.append("\nIncluded buildings: \n");
+        int displayIndex = 1;
+        String firstBuilding = "";
+        for (String building : graphData.csvBuildingIndices.keySet()) {
+            if (displayIndex % 2 == 0) {
+                helpText.append(String.format("%-55.55s  %-55.55s%n", building, firstBuilding));
+            } else {
+                firstBuilding = building;
+            }
+            displayIndex += 1;
+        }
+        System.out.println(helpText);
     }
 
     /** Handler for list command in main.
