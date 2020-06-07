@@ -8,8 +8,8 @@ The interface for this program is implemented using console output inside the te
 To get the distance matrix between all the buildings, run the geocodingBuildings.py script and move the resulting .csv file into the same directory as the Java files.
 ___
 ## Commands:
-add [name]: adds a new set of buildings to calculate optimal path for.
-update [name]: changes contents of an existing set of buildings to calculate optimal path for.
-remove [name]: removes an existing set of buildings.
-list: displays all existing sets of buildings to calculate optimal path for.
+add [name]: adds a new set of buildings to calculate optimal path for.  
+update [name]: changes contents of an existing set of buildings to calculate optimal path for.  
+remove [name]: removes an existing set of buildings.  
+list: displays all existing sets of buildings to calculate optimal path for.  
 help: displays a help message listing command syntax and the list of included buildings.
