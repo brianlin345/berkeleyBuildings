@@ -9,7 +9,7 @@ To get the distance matrix between all the buildings and building coordinates, r
 Graphical output is on by default.
 ___
 ## Commands:
-Commands should be passed as arguments to Main.java, either through a terminal or similar IDE interface.
+Commands should be passed as arguments to Main.java, either through a terminal or similar IDE interface.  
 add [name]: adds a new set of buildings to calculate optimal path for.  
 update [name]: changes contents of an existing set of buildings to calculate optimal path for.  
 remove [name]: removes an existing set of buildings.  
