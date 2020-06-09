@@ -5,7 +5,8 @@ The optimal path between all the buildings is calculated by solving a Traveling 
 ___
 ## Information/Setup
 The interface for this program is implemented using console output inside the terminal, with output generated from passing a valid command format into the Main class.
-To get the distance matrix between all the buildings, run the geocodingBuildings.py script and move the resulting .csv file into the same directory as the Java files.
+To get the distance matrix between all the buildings and building coordinates, run the geocodingBuildings.py script and move the resulting distance and coordinate .csv files into the same directory as the Java files.
+For a graphical representation of optimal paths, set `graphic = true` in the Main class, or `graphic = false` for a text representation.
 ___
 ## Commands:
 add [name]: adds a new set of buildings to calculate optimal path for.  
