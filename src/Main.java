@@ -8,54 +8,66 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-
-        try {
-            setupPersistence();
-            switch (args[0]) {
-                case "add":
-                    if (args.length == 2) {
-                        addHandler(args);
-                        graphData.writeGraphManager();
-                    } else {
-                        System.out.println("Invalid command format.");
-                    }
-                    break;
-                case "update":
-                    if (args.length == 2) {
-                        updateHandler(args);
-                    } else {
-                        System.out.println("Invalid command format.");
-                    }
-                    break;
-                case "remove":
-                    if (args.length == 2) {
-                        removeHandler(args);
-                        graphData.writeGraphManager();
-                    } else{
-                        System.out.println("Invalid command format.");
-                    }
-                    break;
-                case "list":
-                    if (args.length == 1) {
-                        listHandler();
-                    } else {
-                        System.out.println("Invalid command format.");
-                    }
-                    break;
-                case "help":
-                    if (args.length == 1) {
-                        helpHandler();
-                    } else {
-                        System.out.println("Invalid command format.");
-                    }
-                case "quit":
-                    break;
-                default:
-                    System.out.println("Invalid input.");
-                    break;
+        if (args.length == 0) {
+            System.out.println("Please enter a command.");
+        } else {
+            try {
+                setupPersistence();
+                switch (args[0]) {
+                    case "add":
+                        if (args.length == 2) {
+                            addHandler(args);
+                            graphData.writeGraphManager();
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "update":
+                        if (args.length == 2) {
+                            updateHandler(args);
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "remove":
+                        if (args.length == 2) {
+                            removeHandler(args);
+                            graphData.writeGraphManager();
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "list":
+                        if (args.length == 1) {
+                            listHandler();
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "help":
+                        if (args.length == 1) {
+                            helpHandler();
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "graphic":
+                        if (args.length == 2) {
+                            graphicHandler(args);
+                            graphData.writeGraphManager();
+                        } else {
+                            System.out.println("Invalid command format.");
+                        }
+                        break;
+                    case "quit":
+                        break;
+                    default:
+                        System.out.println("Invalid input.");
+                        break;
+                }
+            } catch (IOException excp) {
+                excp.printStackTrace();
             }
-        } catch (IOException excp) {
-            excp.printStackTrace();
         }
     }
 
@@ -80,6 +92,7 @@ public class Main {
     public static void addHandler(String[] args) throws IOException {
         String graphName = args[1];
         if (!graphData.checkGraph(graphName)) {
+            System.out.println(graphData.graphic);
             Scanner scan = new Scanner(System.in);
             List<String> buildingList = new ArrayList<>();
             System.out.println("Enter building names to add to path or STOP to finishing inputting:");
@@ -108,7 +121,7 @@ public class Main {
                 }
             }
             buildingGraph newGraph = new buildingGraph(buildingList, graphName,
-                    graphData.csvRows, graphData.csvBuildingIndices, graphData.csvCoordinates);
+                    graphData.csvRows, graphData.csvBuildingIndices, graphData.csvCoordinates, graphData.graphic);
             newGraph.calcMinPath();
             graphData.addGraph(graphName, newGraph.getGraphID());
         } else {
@@ -184,7 +197,8 @@ public class Main {
                     System.out.println("Invalid building name.");
                 }
             }
-            updateGraph.updateBuildingGraph(graphData.csvRows, graphData.csvBuildingIndices, graphData.csvCoordinates);
+            updateGraph.updateBuildingGraph(graphData.csvRows, graphData.csvBuildingIndices,
+                    graphData.csvCoordinates, graphData.graphic);
             updateGraph.calcMinPath();
         } else {
             System.out.println("No graph with this name found.");
@@ -214,6 +228,7 @@ public class Main {
         helpText.append("update [name]: changes contents of an existing set of buildings to calculate optimal path for.\n");
         helpText.append("remove [name]: removes an existing set of buildings.\n");
         helpText.append("list: displays all existing sets of buildings to calculate optimal path for.\n");
+        helpText.append("graphic [on/off]: toggles from graphical to text representation of paths with \"on\" for graphics and \"off\" for text.\n");
         helpText.append("\nIncluded buildings: \n");
         int displayIndex = 1;
         String firstBuilding = "";
@@ -238,6 +253,20 @@ public class Main {
         }
     }
 
+    /** Handler for the graphics command in main.
+     *
+     * @param args arguments given to program from main method
+     */
+    public static void graphicHandler(String[] args) {
+        if (args[1].equals("on")) {
+            graphData.setGraphic(true);
+        } else if (args[1].equals("off")) {
+            graphData.setGraphic(false);
+        } else {
+            System.out.println("Invalid graphics status.");
+        }
+    }
+
     /** Path to csv file with raw distance values */
     public static String csvPath = "buildingDistances.csv";
 
@@ -255,9 +284,4 @@ public class Main {
 
     /** graphManager instance containing overall graph data */
     public static graphManager graphData;
-
-    /** Indicates whether graphical or text representation of optimal paths will be generated.
-     * True: graphical output, False: text output
-     */
-    public static boolean graphic = true;
 }
