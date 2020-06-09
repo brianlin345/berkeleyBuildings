@@ -46,3 +46,9 @@ with open('src/buildingDistances.csv', 'w+') as csvfile:
         for j in range(0, len(building_coords)):
             distance_list.append(haversine_distance(building_coords[i].latitude, building_coords[i].longitude, building_coords[j].latitude, building_coords[j].longitude))
         csvwriter.writerow(distance_list)
+
+
+with open('src/buildingCoordinates.csv', 'w+') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    for i in range(0, len(building_coords)):
+        csvwriter.writerow([building_coords[i].buiding_name, building_coords[i].longitude, building_coords[i].latitude])

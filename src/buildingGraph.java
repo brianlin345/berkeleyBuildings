@@ -1,8 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.List;
 
 /** Class representing a set of buildings and their optimal path as a connected graph
  * @author Brian Lin
@@ -17,10 +20,11 @@ public class buildingGraph implements Serializable {
      * @param fileIndices mapping of building names to indices in file rows
      */
     public buildingGraph(List<String> buildingNames, String name, HashMap<String, double[]> fileDistances,
-                         HashMap<String, Integer> fileIndices) throws IOException {
+                         HashMap<String, Integer> fileIndices, HashMap<String, double[]> fileCoords) throws IOException {
         this.distances = fileDistances;
         this.indices = fileIndices;
         this.graphName = name;
+        this.coordinates = fileCoords;
         for (int i = 0; i < buildingNames.size(); i++) {
             buildings.put(buildingNames.get(i), i);
             buildingIndices.put(i, buildingNames.get(i));
@@ -37,9 +41,10 @@ public class buildingGraph implements Serializable {
      * @throws IOException if writing the graph to disk encounters an error
      */
     public void updateBuildingGraph(HashMap<String, double[]> fileDistances,
-                               HashMap<String, Integer> fileIndices) throws IOException {
+                               HashMap<String, Integer> fileIndices, HashMap<String, double[]> fileCoords) throws IOException {
         this.distances = fileDistances;
         this.indices = fileIndices;
+        this.coordinates = fileCoords;
         constructGraph();
         writeGraph();
     }
@@ -258,20 +263,32 @@ public class buildingGraph implements Serializable {
 
     /** Displays optimal path with building names and distance between */
     public void displayPath() {
-        System.out.println();
-        System.out.println(String.format("Optimal path for building set %s, starting from %s:",
-                this.graphName, buildingIndices.get(0)));
-        if (pathDistances != null) {
-            for (int nodeIndex = 0; nodeIndex < buildingDistances.length; nodeIndex++) {
-                if (pathDistances[nodeIndex] > 0) {
-                    System.out.println("   |");
-                    System.out.println(String.format("%.2f", pathDistances[nodeIndex]));
-                    System.out.println("   |");
+        if (Main.graphic) {
+            buildingGraphic panel = new buildingGraphic(20, coordinates, buildingIndices, pathDistances, pathNodes);
+            panel.convertCoords();
+            panel.setBackground(Color.LIGHT_GRAY);
+            JFrame frame = new JFrame(String.format("Optimal path for building set %s, starting from %s | Total path distance: %.2f meters",
+                    this.graphName, buildingIndices.get(0), this.pathLen));
+            frame.setSize(buildingGraphic.windowWidth, buildingGraphic.windowHeight);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add(panel, BorderLayout.CENTER);
+            frame.setVisible(true);
+        } else {
+            System.out.println();
+            System.out.println(String.format("Optimal path for building set %s, starting from %s:",
+                    this.graphName, buildingIndices.get(0)));
+            if (pathDistances != null) {
+                for (int nodeIndex = 0; nodeIndex < buildingDistances.length; nodeIndex++) {
+                    if (pathDistances[nodeIndex] > 0) {
+                        System.out.println("   |");
+                        System.out.println(String.format("%.2f", pathDistances[nodeIndex]));
+                        System.out.println("   |");
+                    }
+                    System.out.println(buildingIndices.get(pathNodes[nodeIndex]));
                 }
-                System.out.println(buildingIndices.get(pathNodes[nodeIndex]));
             }
+            System.out.println(String.format("Total path distance: %.2f meters", this.pathLen));
         }
-        System.out.println(String.format("Total path distance: %.2f meters", this.pathLen));
     }
 
     /** Retrieves previous DP calculation by accessing appropriate entry in hashmap
@@ -402,5 +419,7 @@ public class buildingGraph implements Serializable {
 
     /** Mapping of building names to indices from file read in main */
     private transient HashMap<String, Integer> indices;
+
+    private transient HashMap<String, double[]> coordinates;
 
 }

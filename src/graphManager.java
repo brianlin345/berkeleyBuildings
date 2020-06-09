@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /** Class containing overall information and mapping for all building sets created by the user.
@@ -61,6 +62,22 @@ public class graphManager implements Serializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void readCoordinates(String fileName) {
+        csvCoordinates = new HashMap<>();
+        File distanceFile = Paths.get(Main.CWD.getPath(), fileName).toFile();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(distanceFile));
+            String row = "";
+            while ((row = br.readLine()) != null) {
+                String[] rowCoordinates = row.split(",");
+                double[] coordinatePair = new double[]{Double.parseDouble(rowCoordinates[1]), Double.parseDouble(rowCoordinates[2])};
+                csvCoordinates.put(rowCoordinates[0], coordinatePair);
+            }
+        } catch (IOException e) {
+                e.printStackTrace();
         }
     }
 
@@ -132,6 +149,8 @@ public class graphManager implements Serializable {
     /** Mapping of building names to distances from all other buildings
      * from distance matrix csv file */
     public HashMap<String, double[]> csvRows = new HashMap<>();
+
+    public HashMap<String, double[]> csvCoordinates = new HashMap<>();
 
     /** Mapping between building names and indices from raw distance file */
     public HashMap<String, Integer> csvBuildingIndices = new HashMap<>();

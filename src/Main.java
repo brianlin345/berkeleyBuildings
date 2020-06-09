@@ -8,6 +8,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+
         try {
             setupPersistence();
             switch (args[0]) {
@@ -64,6 +65,7 @@ public class Main {
             GRAPHDIR.mkdir();
             graphData = new graphManager(graphDataPath);
             graphData.readDistances(csvPath);
+            graphData.readCoordinates(csvCoordinates);
             graphData.writeGraphManager();
         } else {
             graphData = graphManager.readGraphManager(graphDataPath);
@@ -106,7 +108,7 @@ public class Main {
                 }
             }
             buildingGraph newGraph = new buildingGraph(buildingList, graphName,
-                    graphData.csvRows, graphData.csvBuildingIndices);
+                    graphData.csvRows, graphData.csvBuildingIndices, graphData.csvCoordinates);
             newGraph.calcMinPath();
             graphData.addGraph(graphName, newGraph.getGraphID());
         } else {
@@ -168,6 +170,7 @@ public class Main {
                 }
             }
             while(true) {
+                System.out.println("Updated information for this building set:\n" + updateGraph.toString());
                 System.out.println("Enter the building name to start at:");
                 String input = scan.nextLine();
                 if (updateGraph.checkBuilding(input)) {
@@ -181,8 +184,7 @@ public class Main {
                     System.out.println("Invalid building name.");
                 }
             }
-            updateGraph.updateBuildingGraph(graphData.csvRows, graphData.csvBuildingIndices);
-            updateGraph.displayGraph();
+            updateGraph.updateBuildingGraph(graphData.csvRows, graphData.csvBuildingIndices, graphData.csvCoordinates);
             updateGraph.calcMinPath();
         } else {
             System.out.println("No graph with this name found.");
@@ -239,6 +241,8 @@ public class Main {
     /** Path to csv file with raw distance values */
     public static String csvPath = "buildingDistances.csv";
 
+    public static String csvCoordinates = "buildingCoordinates.csv";
+
     /** File object for CWD */
     public static final File CWD = new File(".");
 
@@ -251,4 +255,5 @@ public class Main {
     /** graphManager instance containing overall graph data */
     public static graphManager graphData;
 
+    public static boolean graphic = true;
 }
