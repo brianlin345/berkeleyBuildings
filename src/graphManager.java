@@ -65,6 +65,10 @@ public class graphManager implements Serializable {
         }
     }
 
+    /** Reads csv file containing table of lat/lon coordinates into mapping of
+     * building names to pairs of lat/lon values
+     * @param fileName name of file to read raw coordinates from
+     */
     public void readCoordinates(String fileName) {
         csvCoordinates = new HashMap<>();
         File distanceFile = Paths.get(Main.CWD.getPath(), fileName).toFile();
@@ -150,6 +154,8 @@ public class graphManager implements Serializable {
      * from distance matrix csv file */
     public HashMap<String, double[]> csvRows = new HashMap<>();
 
+    /** Mapping of building names to their latitude/longitude coordinates
+     * from coordinate csv file */
     public HashMap<String, double[]> csvCoordinates = new HashMap<>();
 
     /** Mapping between building names and indices from raw distance file */

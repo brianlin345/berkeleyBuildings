@@ -241,6 +241,7 @@ public class Main {
     /** Path to csv file with raw distance values */
     public static String csvPath = "buildingDistances.csv";
 
+    /** Path to csv file with raw coordinate values */
     public static String csvCoordinates = "buildingCoordinates.csv";
 
     /** File object for CWD */
@@ -255,5 +256,8 @@ public class Main {
     /** graphManager instance containing overall graph data */
     public static graphManager graphData;
 
+    /** Indicates whether graphical or text representation of optimal paths will be generated.
+     * True: graphical output, False: text output
+     */
     public static boolean graphic = true;
 }

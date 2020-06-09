@@ -261,7 +261,8 @@ public class buildingGraph implements Serializable {
         pathDistances[0] = 0.0;
     }
 
-    /** Displays optimal path with building names and distance between */
+    /** Displays optimal path with building names and distance between.
+     * Displays a graphical representation of the path using buildingGraphic if set in Main, otherwise outputs a text representation */
     public void displayPath() {
         if (Main.graphic) {
             buildingGraphic panel = new buildingGraphic(20, coordinates, buildingIndices, pathDistances, pathNodes);
@@ -420,6 +421,6 @@ public class buildingGraph implements Serializable {
     /** Mapping of building names to indices from file read in main */
     private transient HashMap<String, Integer> indices;
 
+    /** Mapping of building names to coordinate pairs from file read in main */
     private transient HashMap<String, double[]> coordinates;
-
 }

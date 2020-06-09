@@ -3,6 +3,9 @@ import java.awt.geom.AffineTransform;
 import java.util.HashMap;
 import javax.swing.JPanel;
 
+/** Class outputting a graphical representation of the optimal path for a given building set.
+ * @author Brian Lin
+ */
 public class buildingGraphic extends JPanel{
 
     /** Constructor for the graphical output representing the minimal path for a given building set
@@ -76,14 +79,14 @@ public class buildingGraphic extends JPanel{
         }
     }
 
-    /** Draws an arrowhead along paths for stylistic representation of a directed path
+    /** Draws an arrowhead along a given path between nodes for stylistic representation of a directed path
      *
      * @param g2 Graphics object from paint method
      * @param x1 starting x value of line
      * @param x2 ending x value of line
      * @param y1 starting y value of line
      * @param y2 ending y value of line
-     * @param distance 
+     * @param distance String value representing the distance along this line
      */
     private void drawArrowHead(Graphics2D g2, int x1, int x2, int y1, int y2, String distance) {
         double angle = Math.atan2(y2-y1, x2-x1);
@@ -110,6 +113,9 @@ public class buildingGraphic extends JPanel{
         g2.drawString(distance, -25, -5);
     }
 
+    /** Converts latitude/longitude coordinates for buildings to proportional pixel values for display in the graphics window
+     *
+     */
     public void convertCoords() {
         int[][] centersPixel = new int[distances.length][2];
         for (int index = 0; index < centersPixel.length; index++) {
@@ -121,18 +127,73 @@ public class buildingGraphic extends JPanel{
     }
 
 
+    /** Radius for each node marker in pixels
+     *
+     */
     private int outer;
+
+    /** Mapping between building names and their lat/lon pairs from coordinates file
+     *
+     */
     private HashMap<String, double[]> centers;
+
+    /** Mapping between building indices and building names from the building set for this graphic
+     *
+     */
     private HashMap<Integer, String> buildingIndices;
+
+    /** Collection of distances between nodes along the optimal path for the building set for this graphic
+     *
+     */
     private double[] distances;
+
+    /** Collection of nodes traversed along the optimal path for the building set for this graphic
+     *
+     */
     private int[] pathIndices;
+
+    /** Collection of x/y pixel values for nodes used in graphics drawing, ordered by traversal along optimal path
+     *
+     */
     private int[][] centerPixels;
+
+    /** Starting longitude value used to set edge of frame and node positions
+     *
+     */
     private double lonStart;
+
+    /** Ending longitude value used to set edge of frame and node positions
+     *
+     */
     private double lonEnd;
+
+    /** Starting latitude value used to set edge of frame and node positions
+     *
+     */
     private double latStart;
+
+    /** Ending latitude value used to set edge of frame and node positions
+     *
+     */
     private double latEnd;
+
+    /** Value in pixels for the height of the output graphical window
+     *
+     */
     public static int windowHeight = (int)((4.0/6.0) * 800);
+
+    /** Value in pixels for the width of the output graphical window
+     *
+     */
     public static int windowWidth = 800;
+
+    /** Offset value added to longitude coordinates so that nodes do not appear on the edges of the window
+     *
+     */
     private double lonOffset;
+
+    /** Offset value added to latitude coordinates so that nodes do not appear on the edges of the window
+     *
+     */
     private double latOffset;
 }
