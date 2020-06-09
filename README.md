@@ -6,11 +6,13 @@ ___
 ## Information/Setup
 The interface for this program is implemented using console output inside the terminal, with output generated from passing a valid command format into the Main class.
 To get the distance matrix between all the buildings and building coordinates, run the geocodingBuildings.py script and move the resulting distance and coordinate .csv files into the same directory as the Java files.
-For a graphical representation of optimal paths, set `graphic = true` in the Main class, or `graphic = false` for a text representation.
+Graphical output is on by default.
 ___
 ## Commands:
+Commands should be passed as arguments to Main.java, either through a terminal or similar IDE interface.
 add [name]: adds a new set of buildings to calculate optimal path for.  
 update [name]: changes contents of an existing set of buildings to calculate optimal path for.  
 remove [name]: removes an existing set of buildings.  
 list: displays all existing sets of buildings to calculate optimal path for.  
-help: displays a help message listing command syntax and the list of included buildings.
+help: displays a help message listing command syntax and the list of included buildings.  
+graphic [on/off]: toggles from graphical to text representation of paths with "on" for graphics and "off" for text.
