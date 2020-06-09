@@ -1,6 +1,5 @@
 import java.io.*;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /** Class containing overall information and mapping for all building sets created by the user.
@@ -150,6 +149,10 @@ public class graphManager implements Serializable {
         }
     }
 
+    public void setGraphic(boolean status) {
+        this.graphic = status;
+    }
+
     /** Mapping of building names to distances from all other buildings
      * from distance matrix csv file */
     public HashMap<String, double[]> csvRows = new HashMap<>();
@@ -166,4 +169,9 @@ public class graphManager implements Serializable {
 
     /** File object to save graph data to on disk */
     private File saveFile;
+
+    /** Indicates whether graphical or text representation of optimal paths will be generated for all building sets.
+     * True: graphical output, False: text output
+     */
+    public boolean graphic = true;
 }

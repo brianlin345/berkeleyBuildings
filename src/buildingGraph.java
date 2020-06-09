@@ -18,13 +18,15 @@ public class buildingGraph implements Serializable {
      * @param name name of this graph for serialization
      * @param fileDistances mapping of distances to each building from file
      * @param fileIndices mapping of building names to indices in file rows
+     * @param graphic boolean indicating whether to display graphical or text representation of optimal path
      */
     public buildingGraph(List<String> buildingNames, String name, HashMap<String, double[]> fileDistances,
-                         HashMap<String, Integer> fileIndices, HashMap<String, double[]> fileCoords) throws IOException {
+                         HashMap<String, Integer> fileIndices, HashMap<String, double[]> fileCoords, boolean graphic) throws IOException {
         this.distances = fileDistances;
         this.indices = fileIndices;
         this.graphName = name;
         this.coordinates = fileCoords;
+        this.graphic = graphic;
         for (int i = 0; i < buildingNames.size(); i++) {
             buildings.put(buildingNames.get(i), i);
             buildingIndices.put(i, buildingNames.get(i));
@@ -38,13 +40,15 @@ public class buildingGraph implements Serializable {
      *
      * @param fileDistances mapping of building names to rows to use from distance file
      * @param fileIndices mapping of building names to indices from distance file
+     * @param graphic boolean indicating whether to display graphical or text representation of optimal path
      * @throws IOException if writing the graph to disk encounters an error
      */
-    public void updateBuildingGraph(HashMap<String, double[]> fileDistances,
-                               HashMap<String, Integer> fileIndices, HashMap<String, double[]> fileCoords) throws IOException {
+    public void updateBuildingGraph(HashMap<String, double[]> fileDistances, HashMap<String, Integer> fileIndices,
+                                    HashMap<String, double[]> fileCoords, boolean graphic) throws IOException {
         this.distances = fileDistances;
         this.indices = fileIndices;
         this.coordinates = fileCoords;
+        this.graphic = graphic;
         constructGraph();
         writeGraph();
     }
@@ -264,7 +268,7 @@ public class buildingGraph implements Serializable {
     /** Displays optimal path with building names and distance between.
      * Displays a graphical representation of the path using buildingGraphic if set in Main, otherwise outputs a text representation */
     public void displayPath() {
-        if (Main.graphic) {
+        if (this.graphic) {
             buildingGraphic panel = new buildingGraphic(20, coordinates, buildingIndices, pathDistances, pathNodes);
             panel.convertCoords();
             panel.setBackground(Color.LIGHT_GRAY);
@@ -423,4 +427,9 @@ public class buildingGraph implements Serializable {
 
     /** Mapping of building names to coordinate pairs from file read in main */
     private transient HashMap<String, double[]> coordinates;
+
+    /** Indicates whether graphical or text representation of optimal paths will be generated.
+     * True: graphical output, False: text output
+     */
+    public transient boolean graphic;
 }
