@@ -141,6 +141,7 @@ public class Main {
             buildingGraph updateGraph = buildingGraph.readGraph(graphData.getGraph(graphName));
             boolean updateInputExit = true;
             System.out.println(String.format("Now updating %s", graphName));
+            System.out.println("Current information for this building set:\n" + updateGraph.toString());
             while(updateInputExit) {
                 System.out.println(
                         "Enter 1 to add buildings, 2 to remove buildings, or 3 to continue.");

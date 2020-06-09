@@ -149,6 +149,10 @@ public class graphManager implements Serializable {
         }
     }
 
+    /** Sets the graphic status for displaying optimal paths
+     *
+     * @param status status to set graphics toggle to
+     */
     public void setGraphic(boolean status) {
         this.graphic = status;
     }
