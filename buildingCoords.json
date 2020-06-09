@@ -1,0 +1,852 @@
+[
+   {
+      "name":"Bowles Hall",
+      "longitude":"-122.253168",
+      "latitude":"37.873357"
+   },
+   {
+      "name":"Barker Hall",
+      "longitude":"-122.26549",
+      "latitude":"37.873950000000001"
+   },
+   {
+      "name":"Berkeley Way West",
+      "longitude":"-122.267912",
+      "latitude":"37.873592"
+   },
+   {
+      "name":"Doe Memorial Library / Library",
+      "longitude":"-122.25955999999999",
+      "latitude":"37.872439999999997"
+   },
+   {
+      "name":"Blackwell Hall",
+      "longitude":"-122.261142",
+      "latitude":"37.868172"
+   },
+   {
+      "name":"Bancroft Library",
+      "longitude":"-122.2587",
+      "latitude":"37.8723"
+   },
+   {
+      "name":"Wheeler Hall",
+      "longitude":"-122.25914",
+      "latitude":"37.871290000000002"
+   },
+   {
+      "name":"Sproul Hall",
+      "longitude":"-122.25878",
+      "latitude":"37.869599999999998"
+   },
+   {
+      "name":"Chou Hall",
+      "longitude":"-122.254107",
+      "latitude":"37.872381"
+   },
+   {
+      "name":"Koret Visitor Center / Visitor Center",
+      "longitude":"-122.251929",
+      "latitude":"37.871044"
+   },
+   {
+      "name":"Alumni House",
+      "longitude":"-122.26119",
+      "latitude":"37.86968"
+   },
+   {
+      "name":"California Hall",
+      "longitude":"-122.26038",
+      "latitude":"37.87189"
+   },
+   {
+      "name":"Campanile (Sather Tower) / Sather Tower",
+      "longitude":"-122.257964",
+      "latitude":"37.872332"
+   },
+   {
+      "name":"Campbell Hall",
+      "longitude":"-122.25705000000001",
+      "latitude":"37.872979999999998"
+   },
+   {
+      "name":"Dwinelle Hall",
+      "longitude":"-122.26040999999999",
+      "latitude":"37.870579999999997"
+   },
+   {
+      "name":"Academic Innovation Studio",
+      "longitude":"-122.26040999999999",
+      "latitude":"37.870579999999997"
+   },
+   {
+      "name":"Durham Studio Theater",
+      "longitude":"-122.260722",
+      "latitude":"37.870515"
+   },
+   {
+      "name":"2232 Piedmont Ave.",
+      "longitude":"-122.253027",
+      "latitude":"37.870805"
+   },
+   {
+      "name":"Eshleman Hall",
+      "longitude":"-122.260471",
+      "latitude":"37.868761"
+   },
+   {
+      "name":"Demography",
+      "longitude":"-122.253027",
+      "latitude":"37.870805"
+   },
+   {
+      "name":"The Law Building",
+      "longitude":"-122.25341",
+      "latitude":"37.86992"
+   },
+   {
+      "name":"Law Building",
+      "longitude":"-122.25341",
+      "latitude":"37.86992"
+   },
+   {
+      "name":"Valley Life Sciences Building",
+      "longitude":"-122.26211000000001",
+      "latitude":"37.871479999999998"
+   },
+   {
+      "name":"Weill Hall",
+      "longitude":"-122.26325",
+      "latitude":"37.87139"
+   },
+   {
+      "name":"Moffitt Library",
+      "longitude":"-122.26081000000001",
+      "latitude":"37.872549999999997"
+   },
+   {
+      "name":"Li Ka Shing Center",
+      "longitude":"-122.2654",
+      "latitude":"37.8730"
+   },
+   {
+      "name":"Wurster Hall",
+      "longitude":"-122.25488",
+      "latitude":"37.8705"
+   },
+   {
+      "name":"Kroeber Hall",
+      "longitude":"-122.2552",
+      "latitude":"37.869880000000002"
+   },
+   {
+      "name":"Evans Hall",
+      "longitude":"-122.25783",
+      "latitude":"37.873629999999999"
+   },
+   {
+      "name":"Stanley Hall",
+      "longitude":"-122.25609",
+      "latitude":"37.87404"
+   },
+   {
+      "name":"Recreational Sports Facility",
+      "longitude":"-122.262897",
+      "latitude":"37.868652"
+   },
+   {
+      "name":"Spieker Aquatics Complex",
+      "longitude":"-122.262122",
+      "latitude":"37.868809"
+   },
+   {
+      "name":"Haas Pavilion",
+      "longitude":"-122.26222",
+      "latitude":"37.869399999999999"
+   },
+   {
+      "name":"Koshland Hall",
+      "longitude":"-122.26487",
+      "latitude":"37.873939999999997"
+   },
+   {
+      "name":"Morgan Hall",
+      "longitude":"-122.264198",
+      "latitude":"37.873164"
+   },
+   {
+      "name":"Genetics and Plant Biology",
+      "longitude":"-122.264751",
+      "latitude":"37.873513"
+   },
+   {
+      "name":"Mulford Hall",
+      "longitude":"-122.26449",
+      "latitude":"37.872639999999997"
+   },
+   {
+      "name":"Hilgard Hall",
+      "longitude":"-122.263405",
+      "latitude":"37.873164"
+   },
+   {
+      "name":"Henry H. Wheeler Brain Imaging Center",
+      "longitude":"-122.26298332214355",
+      "latitude":"37.873743966413784"
+   },
+   {
+      "name":"Giannini Hall",
+      "longitude":"-122.26233999999999",
+      "latitude":"37.873570000000001"
+   },
+   {
+      "name":"Wellman Hall",
+      "longitude":"-122.262729",
+      "latitude":"37.872982"
+   },
+   {
+      "name":"University House",
+      "longitude":"-122.262077",
+      "latitude":"37.874536"
+   },
+   {
+      "name":"Haviland Hall",
+      "longitude":"-122.26105",
+      "latitude":"37.873739999999998"
+   },
+   {
+      "name":"Starr East Asian Library / East Asian Library",
+      "longitude":"-122.26034",
+      "latitude":"37.873570000000001"
+   },
+   {
+      "name":"North Gate Hall",
+      "longitude":"-122.259826",
+      "latitude":"37.874974"
+   },
+   {
+      "name":"Blum Hall",
+      "longitude":"-122.25914",
+      "latitude":"37.87480"
+   },
+   {
+      "name":"McCone Hall",
+      "longitude":"-122.259660",
+      "latitude":"37.873996"
+   },
+   {
+      "name":"Hesse Hall",
+      "longitude":"-122.259247",
+      "latitude":"37.874167"
+   },
+   {
+      "name":"O'Brien Hall",
+      "longitude":"-122.259094",
+      "latitude":"37.874483"
+   },
+   {
+      "name":"McLaughlin Hall",
+      "longitude":"-122.259051",
+      "latitude":"37.873829"
+   },
+   {
+      "name":"Sutardja Dai Hall / CITRIS",
+      "longitude":"-122.258389",
+      "latitude":"37.874822"
+   },
+   {
+      "name":"Davis Hall",
+      "longitude":"-122.25829",
+      "latitude":"37.874519999999997"
+   },
+   {
+      "name":"Bechtel Engineering Center",
+      "longitude":"-122.25807",
+      "latitude":"37.87425"
+   },
+   {
+      "name":"Cory Hall",
+      "longitude":"-122.25752",
+      "latitude":"37.875050000000002"
+   },
+   {
+      "name":"Hearst Greek Theatre / Greek Theatre",
+      "longitude":"-122.25432",
+      "latitude":"37.87355"
+   },
+   {
+      "name":"Hearst Memorial Mining Building",
+      "longitude":"-122.25727000000001",
+      "latitude":"37.874459999999999"
+   },
+   {
+      "name":"Donner Laboratory",
+      "longitude":"-122.25649",
+      "latitude":"37.87463"
+   },
+   {
+      "name":"Foothill Residence Halls",
+      "longitude":"-122.255763",
+      "latitude":"37.875429"
+   },
+   {
+      "name":"Le Conte Hall",
+      "longitude":"-122.25688",
+      "latitude":"37.872489999999999"
+   },
+   {
+      "name":"Birge Hall",
+      "longitude":"-122.25724",
+      "latitude":"37.872190000000003"
+   },
+   {
+      "name":"Tan Hall",
+      "longitude":"-122.25642000000001",
+      "latitude":"37.873100000000001"
+   },
+   {
+      "name":"Gilman Hall",
+      "longitude":"-122.25629000000001",
+      "latitude":"37.87265"
+   },
+   {
+      "name":"Giauque Hall",
+      "longitude":"-122.255870",
+      "latitude":"37.872446"
+   },
+   {
+      "name":"Hildebrand Hall",
+      "longitude":"-122.255532",
+      "latitude":"37.872895"
+   },
+   {
+      "name":"Lewis Hall",
+      "longitude":"-122.254878",
+      "latitude":"37.873009"
+   },
+   {
+      "name":"Latimer Hall",
+      "longitude":"-122.255835",
+      "latitude":"37.873215"
+   },
+   {
+      "name":"Pimentel Hall",
+      "longitude":"-122.25602000000001",
+      "latitude":"37.87341"
+   },
+   {
+      "name":"Dwinelle Annex",
+      "longitude":"-122.26123",
+      "latitude":"37.870350000000002"
+   },
+   {
+      "name":"Durant Hall",
+      "longitude":"-122.26013",
+      "latitude":"37.871259999999999"
+   },
+   {
+      "name":"Cesar E. Chavez Student Center",
+      "longitude":"-122.26015",
+      "latitude":"37.86980"
+   },
+   {
+      "name":"Zellerbach Hall",
+      "longitude":"-122.261226",
+      "latitude":"37.869048"
+   },
+   {
+      "name":"Martin Luther King, Jr. Student Union / Student Union",
+      "longitude":"-122.259614",
+      "latitude":"37.869137"
+   },
+   {
+      "name":"Bancroft Dance Studio (2401 Bancroft Way) / 2401 Bancroft Way",
+      "longitude":"-122.261202",
+      "latitude":"37.868662"
+   },
+   {
+      "name":"Architects & Engineers (A&E)",
+      "longitude":"-122.258756",
+      "latitude":"37.870162"
+   },
+   {
+      "name":"Old Art Gallery",
+      "longitude":"-122.25861",
+      "latitude":"37.87059"
+   },
+   {
+      "name":"Anthony Hall",
+      "longitude":"-122.25819",
+      "latitude":"37.870690000000003"
+   },
+   {
+      "name":"Moses Hall",
+      "longitude":"-122.25799000000001",
+      "latitude":"37.870989999999999"
+   },
+   {
+      "name":"Barrows Hall",
+      "longitude":"-122.25791",
+      "latitude":"37.870060000000002"
+   },
+   {
+      "name":"Hearst Field Annex",
+      "longitude":"-122.25817000000001",
+      "latitude":"37.86947"
+   },
+   {
+      "name":"South Hall",
+      "longitude":"-122.25851",
+      "latitude":"37.87133"
+   },
+   {
+      "name":"Hargrove Music Library",
+      "longitude":"-122.2561",
+      "latitude":"37.870440000000002"
+   },
+   {
+      "name":"Calvin Laboratory / Melvin Calvin Laboratory",
+      "longitude":"-122.25393",
+      "latitude":"37.870989999999999"
+   },
+   {
+      "name":"Simon Hall",
+      "longitude":"-122.25266000000001",
+      "latitude":"37.86985"
+   },
+   {
+      "name":"Hearst Memorial Gymnasium",
+      "longitude":"-122.25687000000001",
+      "latitude":"37.86956"
+   },
+   {
+      "name":"Bancroft Parking Structure",
+      "longitude":"-122.255820",
+      "latitude":"37.869607"
+   },
+   {
+      "name":"International House",
+      "longitude":"-122.25145000000001",
+      "latitude":"37.869750000000003"
+   },
+   {
+      "name":"California Memorial Stadium",
+      "longitude":"-122.25060",
+      "latitude":"37.87132"
+   },
+   {
+      "name":"Simpson Center for Student-Athlete High Performance",
+      "longitude":"-122.25220",
+      "latitude":"37.87143"
+   },
+   {
+      "name":"Lawrence Berkeley National Laboratory",
+      "longitude":"-122.25082",
+      "latitude":"37.87614"
+   },
+   {
+      "name":"Stephens Hall",
+      "longitude":"-122.25761",
+      "latitude":"37.87124"
+   },
+   {
+      "name":"Morrison Hall",
+      "longitude":"-122.25644",
+      "latitude":"37.870869999999996"
+   },
+   {
+      "name":"Hertz Hall",
+      "longitude":"-122.25566999999999",
+      "latitude":"37.871099999999998"
+   },
+   {
+      "name":"Faculty Club",
+      "longitude":"-122.255862",
+      "latitude":"37.871783"
+   },
+   {
+      "name":"Senior Hall",
+      "longitude":"-122.255533",
+      "latitude":"37.871946"
+   },
+   {
+      "name":"Women's Faculty Club",
+      "longitude":"-122.254870",
+      "latitude":"37.872148"
+   },
+   {
+      "name":"Minor Hall",
+      "longitude":"-122.254711",
+      "latitude":"37.871525"
+   },
+   {
+      "name":"Julia Morgan Hall",
+      "longitude":"-122.238312",
+      "latitude":"37.87476"
+   },
+   {
+      "name":"Haas School of Business / Andersen Auditorium",
+      "longitude":"-122.25384",
+      "latitude":"37.871690000000001"
+   },
+   {
+      "name":"Cheit Hall",
+      "longitude":"-122.25384",
+      "latitude":"37.871690000000001"
+   },
+   {
+      "name":"Archaeological Research Facility / 2251 College Ave",
+      "longitude":"-122.253821",
+      "latitude":"37.870221"
+   },
+   {
+      "name":"Ida Louise Jackson Graduate House / Jackson Graduate House",
+      "longitude":"-122.25400",
+      "latitude":"37.86809"
+   },
+   {
+      "name":"Unit 1 Resident Hall",
+      "longitude":"-122.25512",
+      "latitude":"37.86782"
+   },
+   {
+      "name":"Woo Hon Fai Hall",
+      "longitude":"-122.255667",
+      "latitude":"37.86871000000001"
+   },
+   {
+      "name":"Pacific Film Archive, Berkeley Art Museum and",
+      "longitude":"-122.266425",
+      "latitude":"37.870781"
+   },
+   {
+      "name":"Berkeley Art Museum and Pacific Film Archive",
+      "longitude":"-122.266221",
+      "latitude":"37.870942"
+   },
+   {
+      "name":"Underhill Parking Facility & Playing Field",
+      "longitude":"-122.25492",
+      "latitude":"37.86705"
+   },
+   {
+      "name":"Residential & Student Services Building",
+      "longitude":"-122.255849",
+      "latitude":"37.866884"
+   },
+   {
+      "name":"Unit 2 Resident Hall",
+      "longitude":"-122.25477",
+      "latitude":"37.86609"
+   },
+   {
+      "name":"Cleary Hall",
+      "longitude":"-122.25982",
+      "latitude":"37.866692"
+   },
+   {
+      "name":"Unit 3 Resident Hall",
+      "longitude":"-122.260358",
+      "latitude":"37.867182"
+   },
+   {
+      "name":"Ellsworth Parking Structure",
+      "longitude":"-122.262501",
+      "latitude":"37.865971"
+   },
+   {
+      "name":"Haste Street Child Development Center",
+      "longitude":"-122.261513",
+      "latitude":"37.865899"
+   },
+   {
+      "name":"Tang Center / University Health Services",
+      "longitude":"-122.264260",
+      "latitude":"37.867555"
+   },
+   {
+      "name":"Office of Public Affairs / Public Affairs, Office of",
+      "longitude":"-122.265581",
+      "latitude":"37.867410000000001"
+   },
+   {
+      "name":"Jones Child Study Center",
+      "longitude":"-122.26410",
+      "latitude":"37.86572"
+   },
+   {
+      "name":"Manville Hall",
+      "longitude":"-122.267039",
+      "latitude":"37.865639"
+   },
+   {
+      "name":"Banway Building (2111 Bancroft Way)",
+      "longitude":"-122.26687",
+      "latitude":"37.86788"
+   },
+   {
+      "name":"Parking and Transportation",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"Fall Program for Freshmen",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"University Hall",
+      "longitude":"-122.26635",
+      "latitude":"37.87189"
+   },
+   {
+      "name":"2427 Dwight Way / Dwight Way Child Development Center",
+      "longitude":"-122.259503",
+      "latitude":"37.865160"
+   },
+   {
+      "name":"2535 Channing Way / Channing-Bowditch Apartments",
+      "longitude":"-122.257287",
+      "latitude":"37.867449"
+   },
+   {
+      "name":"2240 Piedmont Ave.",
+      "longitude":"-122.252813",
+      "latitude":"37.870297"
+   },
+   {
+      "name":"Golden Bear Center (1995 University Ave) / 1995 University Ave (Golden Bear Center)",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"UC Berkeley Extension",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"Extension",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"East Asian Studies, Institute of",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"Southeast Asian Studies, Center for",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"Summer Session",
+      "longitude":"-122.27127",
+      "latitude":"37.871989999999997"
+   },
+   {
+      "name":"Energy Biosciences Building",
+      "longitude":"-122.266478",
+      "latitude":"37.873911"
+   },
+   {
+      "name":"Warren Hall / 2195 Hearst",
+      "longitude":"-122.266894",
+      "latitude":"37.874307"
+   },
+   {
+      "name":"Natural Resources Laboratory",
+      "longitude":"-122.266862",
+      "latitude":"37.874892"
+   },
+   {
+      "name":"Insectary Greenhouse",
+      "longitude":"-122.267390",
+      "latitude":"37.874606"
+   },
+   {
+      "name":"Oxford Research Unit",
+      "longitude":"-122.267095",
+      "latitude":"37.875366"
+   },
+   {
+      "name":"Lower Hearst Parking Structure",
+      "longitude":"-122.26165",
+      "latitude":"37.87530"
+   },
+   {
+      "name":"Etcheverry Hall",
+      "longitude":"-122.25930",
+      "latitude":"37.87587"
+   },
+   {
+      "name":"Soda Hall",
+      "longitude":"-122.25870999999999",
+      "latitude":"37.87567"
+   },
+   {
+      "name":"Goldman School / 2607 Hearst",
+      "longitude":"-122.25804",
+      "latitude":"37.87559"
+   },
+   {
+      "name":"Upper Hearst Parking Structure",
+      "longitude":"-122.25735",
+      "latitude":"37.87576"
+   },
+   {
+      "name":"Stern Hall",
+      "longitude":"-122.25553",
+      "latitude":"37.87481"
+   },
+   {
+      "name":"Martinez Commons",
+      "longitude":"-122.257665",
+      "latitude":"37.866744"
+   },
+   {
+      "name":"Anna Head Alumnae Hall",
+      "longitude":"-122.25744",
+      "latitude":"37.86637"
+   },
+   {
+      "name":"Fox Cottage (2350 Bowditch)",
+      "longitude":"-122.256787",
+      "latitude":"37.867561"
+   },
+   {
+      "name":"2334 Bowditch / Latin American Studies, Center for",
+      "longitude":"-122.256863",
+      "latitude":"37.867743"
+   },
+   {
+      "name":"2440 Bancroft Way / Career Center",
+      "longitude":"-122.260674",
+      "latitude":"37.868283"
+   },
+   {
+      "name":"Magnes Collection of Jewish Art and Life / 2121 Allston Way",
+      "longitude":"-122.26686",
+      "latitude":"37.86980"
+   },
+   {
+      "name":"2521 Channing Way / IRLE",
+      "longitude":"-122.257882",
+      "latitude":"37.867318"
+   },
+   {
+      "name":"2515 Channing Way / Academic Achievement Program",
+      "longitude":"-122.258140",
+      "latitude":"37.867215"
+   },
+   {
+      "name":"Minor Hall Addition",
+      "longitude":"-122.255141",
+      "latitude":"37.871354"
+   },
+   {
+      "name":"Clark Kerr Campus",
+      "longitude":"-122.24920",
+      "latitude":"37.86442"
+   },
+   {
+      "name":"Hellman Tennis Center",
+      "longitude":"-122.26514",
+      "latitude":"37.86995"
+   },
+   {
+      "name":"Lawrence Hall of Science",
+      "longitude":"-122.24662",
+      "latitude":"37.87942"
+   },
+   {
+      "name":"Haas Clubhouse",
+      "longitude":"-122.246043",
+      "latitude":"37.872505"
+   },
+   {
+      "name":"Space Sciences Laboratory",
+      "longitude":"-122.24431",
+      "latitude":"37.88071"
+   },
+   {
+      "name":"Mathematical Sciences Research Institute (MSRI)",
+      "longitude":"-122.24434",
+      "latitude":"37.87981"
+   },
+   {
+      "name":"2224 Piedmont Ave.",
+      "longitude":"-122.253048",
+      "latitude":"37.870983"
+   },
+   {
+      "name":"CNMAT (1750 Arch St) / 1750 Arch St",
+      "longitude":"-122.264499",
+      "latitude":"37.876666"
+   },
+   {
+      "name":"2108 Allston Way",
+      "longitude":"-122.267342",
+      "latitude":"37.869401"
+   },
+   {
+      "name":"1608 4th Street / Campus Shared Services",
+      "longitude":"-122.302267",
+      "latitude":"37.873215"
+   },
+   {
+      "name":"1925 Walnut St",
+      "longitude":"-122.266787",
+      "latitude":"37.873014"
+   },
+   {
+      "name":"2451 Ridge Road",
+      "longitude":"-122.261071",
+      "latitude":"37.876213"
+   },
+   {
+      "name":"2483 Hearst Ave.",
+      "longitude":"-122.260593",
+      "latitude":"37.875127"
+   },
+   {
+      "name":"2481 Hearst Ave.",
+      "longitude":"-122.260488",
+      "latitude":"37.875161"
+   },
+   {
+      "name":"Investigative Reporting Program",
+      "longitude":"-122.260488",
+      "latitude":"37.875161"
+   },
+   {
+      "name":"Graduate Theological Union",
+      "longitude":"-122.261843",
+      "latitude":"37.875544"
+   },
+   {
+      "name":"Northern Regional Library Facility",
+      "longitude":"-122.334985",
+      "latitude":"37.917643"
+   },
+   {
+      "name":"Earthquake Engineering Library",
+      "longitude":"-122.332485",
+      "latitude":"37.918328"
+   },
+   {
+      "name":"Maxwell Family Field and Stadium Garage",
+      "longitude":"-122.25272",
+      "latitude":"37.87230"
+   },
+   {
+      "name":"Jacobs Hall",
+      "longitude":"-122.258809",
+      "latitude":"37.876039"
+   },
+   {
+      "name":"Legends Aquatic Center",
+      "longitude":"-122.2654439",
+      "latitude":"37.8671309"
+   }
+]
